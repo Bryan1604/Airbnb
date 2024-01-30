@@ -156,6 +156,7 @@ struct ListingDetail: View {
             }
             .padding()
         }
+        .toolbar(.hidden, for: .tabBar)
         .ignoresSafeArea()
         .padding(.bottom, 44)
         .overlay(alignment: .bottom) {
