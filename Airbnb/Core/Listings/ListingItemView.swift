@@ -8,21 +8,22 @@
 import SwiftUI
 
 struct ListingItemView: View {
+    let hotel: Hotel
     var body: some View {
         VStack(spacing: 8){
             //image
-            ListingImageCarouselView()
+            ListingImageCarouselView(hotel: hotel)
                 .frame(height: 320)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
             //listing detail
             HStack(alignment: .top){
                 VStack(alignment: .leading){
-                    Text("Miami, Florida").fontWeight(.bold).foregroundColor(.blue)
-                    Text("12 mi away").foregroundColor(.gray.opacity(0.7))
+                    Text("\(hotel.city), \(hotel.state)").fontWeight(.bold).foregroundColor(.blue)
+                    Text("\(hotel.address)").foregroundColor(.gray.opacity(0.7))
                     Text("Nov 3 - 10").foregroundColor(.gray.opacity(0.7))
                     HStack(spacing: 4){
-                        Text("$55").fontWeight(.semibold)
+                        Text("\(hotel.pricePerNight)").fontWeight(.semibold)
                         Text(" night")
                     }
                     .foregroundColor(.blue)
@@ -33,7 +34,7 @@ struct ListingItemView: View {
                 //rating
                 HStack( spacing: 2){
                     Image(systemName: "star.fill")
-                    Text("4.5")
+                    Text("\(hotel.rating)")
                 }
                 .foregroundColor(.orange)
             }
@@ -45,6 +46,6 @@ struct ListingItemView: View {
 
 struct ListingItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ListingItemView()
+        ListingItemView(hotel: DeveloperPreview.shared.hotels[0])
     }
 }

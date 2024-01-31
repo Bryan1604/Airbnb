@@ -8,15 +8,11 @@
 import SwiftUI
 
 struct ListingImageCarouselView: View {
-    var images = [
-         "Image-1",
-         "Image-2",
-         "Image-3",
-         "Image-4",
-    ]
+    let hotel: Hotel
+    
     var body: some View {
         TabView{
-            ForEach(images , id: \.self){image in
+            ForEach(hotel.imageUrls, id: \.self){image in
                  Image(image)
                     .resizable()
                     .scaledToFill()
@@ -29,6 +25,6 @@ struct ListingImageCarouselView: View {
 
 struct ListingImageCarouselView_Previews: PreviewProvider {
     static var previews: some View {
-        ListingImageCarouselView()
+        ListingImageCarouselView(hotel: DeveloperPreview.shared.hotels[0])
     }
 }
