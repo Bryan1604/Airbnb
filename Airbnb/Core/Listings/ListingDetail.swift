@@ -11,7 +11,16 @@ import MapKit
 struct ListingDetail: View {
     let hotel: Hotel
     @Environment(\.dismiss) var dimiss
+    @State private var cameraPosition: MapCameraPosition
     
+    init(hotel: Hotel) {
+        self.hotel = hotel
+        let region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: hotel.latitude, longitude: hotel.longitude),
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        )
+        self._cameraPosition = State(initialValue: .region(region))
+    }
     var body: some View {
         ScrollView{
             ZStack(alignment: .topLeading) {
@@ -151,7 +160,7 @@ struct ListingDetail: View {
             VStack(alignment: .leading, spacing: 16){
                 Text("Where you'll be")
                     .font(.headline)
-                Map()
+                Map(position: $cameraPosition) 
                     .frame( height: 200 )
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
