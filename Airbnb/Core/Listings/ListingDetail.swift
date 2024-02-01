@@ -165,6 +165,21 @@ struct ListingDetail: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .padding()
+            
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Text("Comments")
+                        .font(.headline)
+                    Spacer()
+                    Image(systemName: "plus")
+                        .scaledToFill()
+                        .clipShape(Circle())
+                }
+                ForEach(1 ... 5, id: \.self) {_ in
+                    Comment()
+                }
+            }
+            .padding()
         }
         .toolbar(.hidden, for: .tabBar)
         .ignoresSafeArea()
