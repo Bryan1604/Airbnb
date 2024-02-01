@@ -39,9 +39,6 @@ struct ExploreView: View {
                         .navigationBarBackButtonHidden()
                 }
             }
-            
-            
-            
         }
     }
 }
