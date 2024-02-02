@@ -34,7 +34,6 @@ struct Comment: View {
                     }) {
                         Image(systemName: isLiked ? "heart.fill" : "heart" )
                             .foregroundColor(.pink)
-                            .shadow(radius: 4)
                     }
                         
                     Text("\(numLiked)")
@@ -44,8 +43,9 @@ struct Comment: View {
                     Button(action: {
                         self.isReplying.toggle()
                     }) {
-                        Text("Reply").font(.footnote)
-                            .foregroundStyle(.blue)
+                        Image(systemName: "bubble.left" )
+                            .foregroundColor(.blue)
+                        Text("\(comments.count)").font(.footnote)
                     }
                 }
                 
@@ -63,8 +63,8 @@ struct Comment: View {
                     }
                     .padding()
                 }
-                
             }
+            .animation(.snappy)
         }
         .frame(width: .infinity)
     }

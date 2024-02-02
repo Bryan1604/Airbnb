@@ -11,13 +11,13 @@ struct MainTapView: View {
     var body: some View {
         TabView {
             ExploreView()
-                .tabItem { Label("Explore", systemImage: "magnifyingglass") }
+                .tabItem { Label("Explore", systemImage: "magnifyingglass")}
             WishlistView()
                 .tabItem { Label("Wishlists", systemImage: "heart") }
             ProfileView()
-                .tabItem { Label("Profile", systemImage: "person") }
+                .tabItem { Label("Profile", systemImage: "person")}
         }
-        
+        .tint(.pink)
     }
 }
 
