@@ -12,7 +12,8 @@ struct ListingDetail: View {
     let hotel: Hotel
     @Environment(\.dismiss) var dimiss
     @State private var cameraPosition: MapCameraPosition
-    
+    @State private var startDate = Date.now
+    @State private var endDate = Date.now
     init(hotel: Hotel) {
         self.hotel = hotel
         let region = MKCoordinateRegion(
@@ -180,6 +181,7 @@ struct ListingDetail: View {
                 }
             }
             .padding()
+            .animation(.snappy)
         }
         .toolbar(.hidden, for: .tabBar)
         .ignoresSafeArea()
@@ -195,6 +197,34 @@ struct ListingDetail: View {
                             .fontWeight(.semibold)
                         Text("Total before taxes")
                             .font(.footnote)
+//                        HStack {
+//                            Text("From ")
+//                                .font(.footnote)
+//                                .fontWeight(.semibold)
+//                            .underline()
+//                            DatePicker(selection: $startDate, in: Date.now..., displayedComponents: .date ) {
+//    //                            Text("From ")
+//    //                                .font(.footnote)
+//    //                                .fontWeight(.semibold)
+//    //                                .underline()
+//                            }
+//                            .scaleEffect(0.8)
+//                        }
+//                        HStack {
+//                            Text("To ")
+//                                .font(.footnote)
+//                                .fontWeight(.semibold)
+//                            .underline()
+//                            DatePicker(selection: $endDate, in: Date.now..., displayedComponents: .date ) {
+//    //                            Text("From ")
+//    //                                .font(.footnote)
+//    //                                .fontWeight(.semibold)
+//    //                                .underline()
+//                            }
+//                            .scaleEffect(0.8)
+//                        }
+                       
+                       
                         Text("Oct 15 - 20")
                             .font(.footnote)
                             .fontWeight(.semibold)
